@@ -1,4 +1,4 @@
-package com.wenox.traffic;
+package com.wenox.traffic.repository;
 
 import com.wenox.traffic.domain.Speed;
 import org.springframework.data.repository.CrudRepository;

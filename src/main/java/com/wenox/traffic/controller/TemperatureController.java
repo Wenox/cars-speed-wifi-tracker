@@ -1,7 +1,9 @@
 package com.wenox.traffic.controller;
 
-import com.wenox.traffic.repository.SpeedRepository;
 import com.wenox.traffic.domain.Speed;
+import com.wenox.traffic.domain.Temperature;
+import com.wenox.traffic.domain.TemperatureDto;
+import com.wenox.traffic.repository.TemperatureRepository;
 import java.net.URI;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -11,19 +13,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/speed")
+@RequestMapping("/api/temperatures")
 @RequiredArgsConstructor
-public class SpeedController {
+public class TemperatureController {
 
-  private final SpeedRepository speedRepository;
+  private final TemperatureRepository temperatureRepository;
 
   @PostMapping
-  public ResponseEntity<Speed> add(@RequestBody String speed) {
-    Speed saved = speedRepository.save(new Speed(Double.valueOf(speed)));
+  public ResponseEntity<Temperature> add(@RequestBody TemperatureDto dto) {
+    Temperature saved = temperatureRepository.save(new Temperature(dto.getValue1(), dto.getValue2()));
 
     return ResponseEntity
-        .created(URI.create("/api/speed/" + saved.getId()))
+        .created(URI.create("/api/temperatures/" + saved.getId()))
         .body(saved);
+
   }
 
 }
