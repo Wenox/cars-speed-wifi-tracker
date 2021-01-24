@@ -1,13 +1,13 @@
 package com.wenox.traffic.service;
 
-import com.wenox.traffic.domain.Message;
+import com.wenox.traffic.domain.Info;
 import com.wenox.traffic.repository.MessageRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 @Service
-public class MessageService {
+public class InfoService {
 
   private final MessageRepository messageRepository;
 
@@ -15,27 +15,27 @@ public class MessageService {
 
   private int counter = 0;
 
-  public MessageService(@Value("${app.defaultMessage}") String defaultMessage,
-                        MessageRepository messageRepository) {
+  public InfoService(@Value("${app.defaultMessage}") String defaultMessage,
+                     MessageRepository messageRepository) {
     this.defaultMessage = defaultMessage;
     this.messageRepository = messageRepository;
   }
 
-  public Message add(String message) {
-    return messageRepository.save(new Message(message));
+  public Info add(String message) {
+    return messageRepository.save(new Info(message));
   }
 
   public String getNextMessage() {
-    List<Message> messages = messageRepository.findAll();
+    List<Info> infos = messageRepository.findAll();
 
-    if (messages.isEmpty()) {
+    if (infos.isEmpty()) {
       return defaultMessage;
     }
 
-    Message message = messages.get(counter % messages.size());
+    Info info = infos.get(counter % infos.size());
 
     counter++;
 
-    return message.getMessage();
+    return info.getMessage();
   }
 }

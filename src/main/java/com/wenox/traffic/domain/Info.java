@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Data
 @NoArgsConstructor
-public class Message {
+public class Info {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,7 +24,7 @@ public class Message {
   @Column(name = "registered_time", nullable = false)
   private final LocalDateTime localDateTime = LocalDateTime.now();
 
-  public Message(String message) {
+  public Info(String message) {
     this.message = message;
   }
 }

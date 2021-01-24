@@ -1,6 +1,5 @@
 package com.wenox.traffic.controller;
 
-import com.wenox.traffic.domain.Speed;
 import com.wenox.traffic.domain.Temperature;
 import com.wenox.traffic.domain.TemperatureDto;
 import com.wenox.traffic.repository.TemperatureRepository;

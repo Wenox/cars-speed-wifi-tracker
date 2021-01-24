@@ -15,17 +15,17 @@ public class MessagePreloader {
   @Bean
   public CommandLineRunner loadMessages(MessageRepository messageRepository) {
     return args -> {
-      messageRepository.save(new Message("ZAPNIJ PASY"));
-      messageRepository.save(new Message("DRIVE SAFE"));
-      messageRepository.save(new Message("TRZYMAJ SIE PRAWEGO PASA"));
-      messageRepository.save(new Message("PAMIETAJ O KORYTARZU ZYCIA"));
-      messageRepository.save(new Message("UWAGA! WYPADKI"));
-      messageRepository.save(new Message("REMONT 3 KM"));
-      messageRepository.save(new Message("OBJAZD AUTOSTRADA A4"));
-      messageRepository.save(new Message("INFORMACJA DROGOWA 19-111"));
-      messageRepository.save(new Message("KONTROLA GRANICZNA"));
-      messageRepository.save(new Message("KONTROLA PREDKOSCI"));
-      messageRepository.save(new Message("STOSUJ JAZDE NA ZAMEK"));
+      messageRepository.save(new Info("ZAPNIJ PASY"));
+      messageRepository.save(new Info("DRIVE SAFE"));
+      messageRepository.save(new Info("TRZYMAJ SIE PRAWEGO PASA"));
+      messageRepository.save(new Info("PAMIETAJ O KORYTARZU ZYCIA"));
+      messageRepository.save(new Info("UWAGA! WYPADKI"));
+      messageRepository.save(new Info("KONTROLA PREDKOSCI"));
+      messageRepository.save(new Info("REMONT 3 KM"));
+      messageRepository.save(new Info("OBJAZD AUTOSTRADA A4"));
+      messageRepository.save(new Info("INFORMACJA DROGOWA 19-111"));
+      messageRepository.save(new Info("KONTROLA GRANICZNA"));
+      messageRepository.save(new Info("STOSUJ JAZDE NA SUWAK"));
     };
   }
 }

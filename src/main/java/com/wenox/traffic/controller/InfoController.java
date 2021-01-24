@@ -1,7 +1,7 @@
 package com.wenox.traffic.controller;
 
-import com.wenox.traffic.domain.Message;
-import com.wenox.traffic.service.MessageService;
+import com.wenox.traffic.domain.Info;
+import com.wenox.traffic.service.InfoService;
 import java.net.URI;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -12,23 +12,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/messages")
+@RequestMapping("/api/info")
 @RequiredArgsConstructor
-public class MessageController {
+public class InfoController {
 
-  private final MessageService messageService;
+  private final InfoService infoService;
 
   @PostMapping
-  public ResponseEntity<Message> add(@RequestBody String message) {
-    Message saved = messageService.add(message);
+  public ResponseEntity<Info> add(@RequestBody String message) {
+    Info saved = infoService.add(message);
 
     return ResponseEntity
-        .created(URI.create("/api/messages/" + saved.getId()))
+        .created(URI.create("/api/info/" + saved.getId()))
         .body(saved);
   }
 
   @GetMapping("/next")
   public String getNextMessage() {
-    return messageService.getNextMessage();
+    return infoService.getNextMessage();
   }
 }
